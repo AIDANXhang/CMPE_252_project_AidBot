@@ -1,0 +1,231 @@
+version: "3.1"
+
+intents:
+  - greet
+  - giving_category_place
+  - ask_purpose
+  - ouot_of_scope
+  - mood_unhappy
+  - deny
+  - mood_great
+  - affirm
+  - thanks
+  - goodbye
+  - bot_challenge
+  - giving_radius
+  - giving_address
+  - emergency_ambulance
+  - emergency_police
+
+entities:
+  - address
+  - category_place
+  - radius
+  - emergency_type
+
+slots:
+  category_place:
+    type: categorical
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: category_place
+      intent: giving_category_place
+    values:
+    - dentist
+    - hospital
+    - veterinarian
+  address:
+    type: list
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: address
+  lat_lon:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  radius:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: radius
+  emergency_type:
+    type: categorical
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: emergency_type
+      intent: emergency_ambulance
+    values:
+    - ambulance
+
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  - text: Hey, how's it going?
+  - text: Hi, how are you today?
+  - text: Hello, how are you doing?
+  - text: Hey, how are you?
+  - text: Hi, how are you?
+  - text: Hello, how are you today?
+  - text: Hello, how is your day going?
+  - text: Hey, how are you today?
+  - text: Hello there, how are you?
+  - text: Hey there, how are you?
+  - text: Hi there, how's it going?
+  - text: Hello, how are you? 
+  utter_cheer_up:
+  - text: Sitting in peaceful surroundings can help. Perhaps some meditation. Can you do that?
+  - text: I am sorry to hear that. Hanging out with your friends can help improve your mood. Does that help?
+  - text: Going for a walk can help with your mood, Can you do that? It'll help you.
+  - text: You have to fight through some bad days to earn the best day of your life. Does that help?
+  utter_purpose:
+  - text: I can help you search for dentist, hospital or veterinarian services.
+  - text: I can help you find a dentist, hospital or veterinarian.
+  - text: I can help you with finding a dentist, hospital or a veterinarian.
+  - text: I can help you look for dentist, hospital or veterinarian services.
+  - text: I can help you with dentist, hospital or veterinarian services.
+  - text: I can assist you find a dentist, a hospital or a veterinarian.
+  - text: I can assist you with finding a dentist, hospital or veterinarian services.
+  - text: I can assist you search for dentist, hospital or veterinarian.
+  - text: I can help you to get to a dentist, hospital or a veterinarian.
+  - text: I can help you search places for dentist, hospital or veterinarian.
+  utter_happy:
+  - text: Nice, good to hear that.
+  - text: Great. I am glad to hear that.
+  - text: Amazing, good to know!
+  - text: Nice, I am glad to hear that.
+  - text: Good, I am happy to hear that.
+  - text: Amazing, nice to hear that.
+  - text: Great, happy to hear that
+  - text: Fantastic, good to hear that.
+  utter_ask_category_place:
+  - text: Are you looking for a dentist, hospital, or veterinarian?
+  - text: Are you trying to find a dentist, hospital, or veterinarian?
+  - text: Are you searching for a dentist, hospital, or veterinarian?
+  - text: Are you trying to find a dentist, hospital, or veterinarian?
+  - text: Do you want to visit a dentist, hospital, or veterinarian?
+  - text: Are you trying to search for a dentist, hospital, or veterinarian?
+  - text: Do you want me to find a dentist, hospital, or veterinarian for you?
+  - text: Do you want me to search for a dentist, hospital, or veterinarian for you?
+  - text: Do you want me to look for a dentist, hospital, or veterinarian for you?
+    buttons:
+    - title: dentist
+      payload: /giving_category_place{{"category_place":"dentist"}}
+    - title: hospital
+      payload: /giving_category_place{{"category_place":"hospital"}}
+    - title: veterinarian
+      payload: /giving_category_place{{"category_place":"veterinarian"}}
+  utter_ask_address:
+  - text: Where do you want to search? Give me an address, please
+  - text: Where do you want me to search? Give me an address, please
+  - text: Which place should I search in? Give me an address, please
+  - text: Address for searching, please?
+  - text: Can you give me an address to search, please?
+  - text: Give me an address, please
+  - text: Address for searching, please
+  - text: Where do you want me to look? Give me an address, please
+  - text: Where should I search? Give me an address, please
+  - text: Give me an address to search please, please
+  utter_ask_radius:
+  - text: Give me a search radius in km, please.
+  - text: Tell me a search radius in km, please.
+  - text: Search radius, please (in km).
+  - text: Search radius in km, please.
+  - text: Give a search radius in km, please.
+  - text: Search radius in kilometers, please.
+  - text: Give a search radius in kilometers, please.
+  utter_wrong_address:
+  - text: invalid address, try again please
+  - text: Can you check for any typos, I can't process this address
+  - text: There seems to be a mistake, can you try again please?
+  - text: Oops, invalid address, can you check that and try again?
+  - text: Oops, can't locate the address, can you try again please?
+  - text: Can't locate this address, can you try something different please?
+  - text: Can you try with some other address?
+  utter_wrong_radius:
+  - text: Can you write the radius in number for me? Thanks
+  - text: Oops, use a number.
+  - text: Give me a number, thanks!
+  - text: Can you give me a number, please?
+  - text: Oops, I need a number, please
+  - text: Can you give me the radius as a number, please?
+  utter_action_help_ambulance:
+  - text: Depending on the country, you can call - Europe 112, USA 911, India 108, Japan 119.
+  utter_action_help_police:
+  - text: Depending on the country, you can call - Europe 112, USA 911, India 108, Japan 119.
+  utter_welcome:
+  - text: No problem!
+  - text: You're welcome!
+  - text: You're welcome! Glad to help you!
+  - text: No problem, happy to help!
+  - text: You're welcome, happy to help you!
+  - text: Welcome! Happy to help you!
+  utter_please_rephrase:
+  - text: Sorry, please rephrase.
+  - text: Sorry, can you rephrase that for me please?
+  - text: Can you please rephrase that?
+  - text: Sorry, can't process that. Please rephrase.
+  utter_default:
+  - text: Would you say that again for me please?
+  - text: Can you repeat that please?
+  - text: Repeat that for me please
+  - text: Say it again, please
+  utter_iamabot:
+  - text: I am aidbot. Nice to meet ya!
+  - text: My name is aidbot. Pleased to help ya!
+  - text: I am aidbot, powered by RASA. 
+  - text: Hey, I am aidbot, good to see you!
+  - text: This is aidbot, here to help you!
+  - text: Name's aidbot, nice to see you!
+  utter_did_that_help:
+  - text: Did that help you?
+  - text: Did that help?
+  - text: Was it helpful?
+  - text: Was that helpful?
+  utter_out_of_scope:
+  - text: Oh, that request is out of my scope. Sorry
+  - text: I can't do that for you, sorry.
+  - text: I can't process that for you, sorry
+  - text: Oh, I can't do that, sorry
+  - text: Beyond my scope, sorry
+  utter_goodbye:
+  - text: Bye, be safe!
+  - text: Ciao, be safe!
+  - text: Bye bye, stay safe!
+  - text: Bye, stay safe!
+  - text: Stay healthy! Bye!
+  - text: Stay safe! Bye!
+  - text: Stay safe! Ciao!
+  - text: Bye bye, be safe!
+
+actions:
+- utter_greet
+- utter_welcome
+- utter_purpose
+- utter_happy
+- utter_cheer_up
+- utter_out_of_scope
+- utter_goodbye
+- action_reset_address
+- begin_search_action
+- check_form_search_places
+- search_for_medical_care_action
+- utter_ask_category_place
+- action_validate_slot_mappings
+- utter_action_help_ambulance
+- utter_action_help_police
+
+forms:
+  place_search_form:
+    required_slots:
+    - category_place
+    - address
+    - radius
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

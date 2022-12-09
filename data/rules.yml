@@ -1,0 +1,52 @@
+version: "3.1"
+
+rules:
+
+- rule: Respond with bot utter when asked about bot
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Say welcome after thanks
+  steps:
+  - intent: thanks
+  - action: utter_welcome
+
+- rule: Explain purpose
+  steps:
+    - intent: ask_purpose
+    - action: utter_purpose
+    - action: utter_ask_category_place
+
+- rule: out-of-scope
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+
+- rule: Form activation
+  steps:
+  - intent: giving_category_place
+  - action: place_search_form
+  - active_loop: place_search_form
+
+- rule: Form submission
+  condition:
+  - active_loop: place_search_form
+  steps:
+  - action: place_search_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: begin_search_action
+  - action: search_for_medical_care_action
+
+- rule: When low NLU confidence, ask kto rephrase
+  steps:
+  - intent: nlu_fallback
+  - action: utter_please_rephrase
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+  

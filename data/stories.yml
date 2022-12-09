@@ -1,0 +1,283 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+
+- story: emergency path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: emergency_police
+  - action: utter_action_help_police
+  - action: utter_did_that_help
+  - intent: affirm
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: emergency path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: emergency_ambulance
+  - action: utter_action_help_ambulance
+  - action: utter_did_that_help
+  - intent: affirm
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: search path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - action: utter_purpose
+  - action: utter_ask_category_place
+  - intent: giving_category_place
+    entities:
+    - category_place: dentist
+  - slot_was_set:
+    - category_place: dentist
+  - action: place_search_form
+  - active_loop: place_search_form
+  - slot_was_set:
+    - requested_slot: address
+  - slot_was_set:
+    - lat_lon: 40.7128,-74.006
+  - slot_was_set:
+    - address:
+      - New York
+  - slot_was_set:
+    - requested_slot: radius
+  - slot_was_set:
+    - radius: '12.0'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: begin_search_action
+  - action: search_for_medical_care_action
+  - intent: giving_radius
+    entities:
+    - radius: '12'
+  - slot_was_set:
+    - radius: '12.0'
+  - action: begin_search_action
+  - action: search_for_medical_care_action
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: search path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - action: utter_purpose
+  - action: utter_ask_category_place
+  - intent: giving_category_place
+    entities:
+    - category_place: hospital
+  - slot_was_set:
+    - category_place: hospital
+  - action: place_search_form
+  - active_loop: place_search_form
+  - slot_was_set:
+    - requested_slot: address
+  - slot_was_set:
+    - lat_lon: 48.8566,34.0522
+  - slot_was_set:
+    - address:
+      - Paris
+      - France
+  - slot_was_set:
+    - requested_slot: radius
+  - slot_was_set:
+    - radius: '20.0'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: begin_search_action
+  - action: search_for_medical_care_action
+  - intent: thanks
+  - action: utter_welcome
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: story path 3
+  steps:
+  - intent: ask_purpose
+  - action: utter_purpose
+  - action: utter_ask_category_place
+  - intent: giving_category_place
+    entities:
+    - category_place: veterinarian
+  - slot_was_set:
+    - category_place: veterinarian
+  - action: place_search_form
+  - active_loop: place_search_form
+  - slot_was_set:
+    - requested_slot: address
+  - slot_was_set:
+    - lat_lon: 17.385,78.487
+  - slot_was_set:
+    - address:
+      - Hyderabad
+  - slot_was_set:
+    - requested_slot: radius
+  - slot_was_set:
+    - radius: '14.0'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: begin_search_action
+  - action: search_for_medical_care_action
+  - intent: giving_category_place
+    entities:
+    - category_place: dentist
+    - address: Japan
+  - slot_was_set:
+    - lat_lon: 36.2048,138.2529
+  - slot_was_set:
+    - address:
+      - Japan
+  - slot_was_set:
+    - category_place: hospital
+  - action: place_search_form
+  - active_loop: place_search_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: begin_search_action
+  - action: search_for_medical_care_action
+  - intent: giving_address
+    entities:
+    - address: Delhi
+    - address: India
+  - slot_was_set:
+    - lat_lon: 28.7041,77.1025
+  - slot_was_set:
+    - address:
+      - Delhi
+      - India
+  - action: begin_search_action
+  - action: search_for_medical_care_action
+  - intent: out_of_scope
+    entities:
+    - category_place: dentist
+  - action: utter_out_of_scope
+  - intent: thanks
+  - action: utter_welcome
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: search path 4
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - action: utter_purpose
+  - action: utter_ask_category_place
+  - intent: giving_category_place
+    entities:
+    - category_place: dentist
+  - slot_was_set:
+    - category_place: dentist
+  - action: place_search_form
+  - active_loop: place_search_form
+  - slot_was_set:
+    - requested_slot: address
+  - slot_was_set:
+    - lat_lon: -8.7832,34.5085
+  - slot_was_set:
+    - address:
+      - Africa
+  - slot_was_set:
+    - requested_slot: radius
+  - slot_was_set:
+    - radius: '18.0'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: begin_search_action
+  - action: search_for_medical_care_action
+  - intent: thanks
+  - action: utter_welcome
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: search path 5
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - action: utter_purpose
+  - action: utter_ask_category_place
+  - intent: giving_category_place
+    entities:
+    - category_place: 
+  - slot_was_set:
+    - category_place: veterinarian
+  - action: place_search_form
+  - active_loop: place_search_form
+  - slot_was_set:
+    - requested_slot: address
+  - slot_was_set:
+    - lat_lon: 40.7128,-74.006
+  - slot_was_set:
+    - address:
+      - New York
+  - slot_was_set:
+    - requested_slot: radius
+  - slot_was_set:
+    - radius: '34.0'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: begin_search_action
+  - action: search_for_medical_care_action
+  - intent: giving_radius
+    entities:
+    - radius: '17'
+  - slot_was_set:
+    - radius: '17.0'
+  - action: begin_search_action
+  - action: search_for_medical_care_action
+  - intent: goodbye
+  - action: utter_goodbye

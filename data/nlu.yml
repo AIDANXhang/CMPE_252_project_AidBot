@@ -1,0 +1,284 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - Hey
+    - Heya
+    - hello
+    - Hello
+    - Hi
+    - hi
+    - hello there
+    - Hi there
+    - good morning
+    - good evening
+    - moin
+    - namaste
+    - hola
+    - hey there
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - Hey man
+    - Hey dude
+    - Hey girl
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - cya
+    - byee
+    - have a nice day
+    - see you around
+    - cu around
+    - have a good one
+    - bye bye
+    - cu ltr
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - yess
+    - that sounds good
+    - correct
+    - yep
+    - absolutely
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - noo
+    - not really
+    - nope
+    - nah
+
+- intent: out_of_scope
+  examples: |
+    - Can I book an appointment?
+    - I want to book an appointment?
+    - Do you know how to get there.
+    - Can you give me directions to get there?
+    - Can you call them for me?
+    - Can you give them a call?
+    - Give them a call for me, please.
+    - Can you tell me when it is open.
+    - Are they open now?
+
+- intent: thanks
+  examples: |
+    - ty
+    - thanku
+    - thanks
+    - Ty
+    - TY
+    - thank you
+    - thank you so much
+    - Thank you for your service.
+    - Thank you for your help.
+    - thanks a lot
+    - Thank you very much
+    - Thanks
+    - oh thanks
+    - thanks! got it
+    - OK thanks
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - fantastic
+    - superb
+    - I am going to save the world
+    - super stoked
+    - really good
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - terrible
+    - very saad
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - are you a robot?
+    - are you a human being?
+    - who am I talking to?
+    - are you a robot?
+    - are you an ai?
+
+- intent: giving_category_place
+  examples: |
+    - Search for the [dentist](category_place)
+    - I want to look for [dentist](category_place)
+    - Look for [dentist](category_place)
+    - I would like to search for [dentist](category_place)
+    - Make a search for [dentist](category_place)
+    - Find me a [dentist](category_place) near [Sydney] [Australia](address)
+    - Find a [dentist](category_place) near [Berlin], [Munich], [Frankfurt](address)
+    - Find [dentist](category_place) near [Paris] [France](address)
+    - Find for a [dentist](category_place) near [Berlin], [Munich], [Frankfurt](address)
+    - Search for the [hospital](category_place)
+    - I want to look for [hospital](category_place)
+    - Look for [hospital](category_place)
+    - I would like to search for [hospital](category_place)
+    - Make a search for [hospital](category_place)
+    - Find me a [hospital](category_place) near [Sydney] [Australia](address)
+    - Find a [hospital](category_place) near [Berlin], [Munich], [Frankfurt](address)
+    - Find [hospital](category_place) near [Sydney] [Australia](address)
+    - Find for a [hospital](category_place) near [Berlin], [Munich], [Frankfurt](address)
+    - Search [hospital](category_place) around [Hamburg](address), [Germany](address)
+    - Look for a [veterinarian](category_place) near about [Hyderabad](address), [India](address)
+    - Search for [hospital](category_place) close to the [Taj Mahal](address), [India](address)
+    - Search [dentist](category_place) around the [Kyiv](address), [Ukraine](address) within a [12](radius) kilometre radius
+    - Give me [hospital](category_place) in [Seoul](address), [Korea](address) with a radius of [24](radius) km
+    - I want to look for [veterinarian]{"entity": "category_place", "value": "veterinarian"}
+    - I want [hospital](address) [twenty one](radius) kilometer from here.
+    - Find a [hospital](address) in [twenty one](radius) kilometers from here.
+    - Look for [dentist](category_place) in [USA](address)
+    - I want to search near the [Charminar](address), [India](address)
+    - Look for [dentist](category_place) instead
+    - Look for [veterinarian](category_place) instead
+    - Look for them [veterinarian](category_place)
+    - I want to look for a [veterinarian](category_place)
+
+- intent: giving_address
+  examples: |
+    - [Canada](address)
+    - [USA](address)
+    - [Mumbai](address), [India](address)
+    - [Seoul](address), [Korea](address)
+    - [India](address)
+    - [2892 Stringham Way](address), [California](address), [CA](address), [USA](address)
+    - [Japan](address)
+    - [Korea](address)
+    - I live in [San Jose](address), [California](address), [CA](address), [USA](address)
+    - [190 Ryland St](address), [California](address), [CA](address), [USA](address)
+    - [N Market St](address), (California)(address)
+    - [San Jose](address)
+    - Search near [Mohr Avenue](address), [CA](address)
+    - [Coleman Avenue](address), [San Jose](address)
+    - [Mumbai](address), [India](address)
+    - You can search at [Kukatpally](address), [Hyderabad](address), [Telangana](address), [India](address)
+    - [Mumbai](address), [India](address)
+    - [2892 Stringham Way](address), [California](address), [CA](address), [USA](address)
+    - [Paris](address)
+    - [23rd Ave](address), [Omaha](address), [Nebraska](address), [USA](address)
+    - I am currently at [N Market St](address), [San Jose](address), [CA](address), [USA](address)
+    - I currenly reside at [Karimanagar](address), [Telangana](address)
+    - I live at the [Hotel de ville](address), [Paris](address)
+    - [Texas](address)
+    - [California](address)
+    - My current location is [Pashupatinath temple](address), [Gaushala Road](address), [Kathmandu](address), [Nepal](address)
+    - My current address is [Khan el khalili](address), [Cairo](address), [Africa](address)
+    - I live near [University of Alberta](address), [Edmonton](address), [Alberta](address), [Canada](address)
+    - My address is [Visby Medical](address), [Visby](address), [Gotland](address), [Sweden](address)
+    - [Delhi](address), [India](address)
+    - Please search near [Nepal](address)
+    - You can search near [Berlin](address), [Germany](address)
+    - Now look for places in [Paris](address)
+    - I want to find in [Beijing](address), [China](address)
+    - Can I search in [Tokyo](address), [Japan](address)
+
+- intent: giving_radius
+  examples: |
+    - [4](radius)
+    - [eight](radius)
+    - [fourty two](radius)
+    - [thirty](radius) kilometers
+    - [eleven](radius) km
+    - Use a search radius of [8](radius) km
+    - Use a search radius of [12](radius) kilometers
+    - Use a radius of [thirty nine](radius) km
+    - [3](radius) kilometres
+    - Search within [11](radius) km from here
+    - Search within [fifteen](radius) km
+    - Search within [four](radius) kilometers from here
+    - Search within [21](radius) kilometers
+    - Search within [ten](radius) km
+    - Look for places [29](radius) km from me
+    - change search radius to [8](radius) km from here
+    - [sixty four] kilometer
+    - [six](radius) kilometre
+    - Find places within [twenty](radius) km from here
+
+- intent: emergency_police
+  examples: |
+    - I have to call the [police](Police), please
+    - I need to call the [police squad](Police), please
+    - I have to call the [police van](Police), please
+    - Can you call the [police](Police)
+    - Can you give a call to the [police](Police)
+    - Will you call the [police squad](Police)
+    - I need to give a call to the [sheriff](police)
+    - I need to call to [police](Police)
+    - I need to contact the [police](Police)
+    - I have to phone the [police station](Police)
+
+- intent: emergency_ambulance
+  examples: |
+    - I have to call the [ambulance](Ambulance), please
+    - I need to call the [ambulance](Ambulance), please
+    - Can you call the [ambulance](Ambulance)
+    - Can you give a call to the [ambulance](Ambulance)
+    - Will you call the [ambulance](Ambulance) for me?
+    - I need to give a call to the [ambulance](Ambulance)
+    - I have to call the [ambulance](Ambulance), please
+    - I need to call to [ambulance](Ambulance)
+    - I need to contact the [ambulance](Ambulance)
+    - I have to phone the [ambulance](Ambulance)
+
+- intent: ask_purpose
+  examples: |
+    - what is your purpose?
+    - what can you do?
+    - Is there anything you can do?
+    - What do you do?
+    - how can you help me?
+    - help me
+    - help
+    - can you help me?
+    - what can you do to help me?
+    - what's your purpose?
