@@ -60,8 +60,8 @@ It also stores the information on MySQL database:
 
 ## Challenges and issues
 
-- Sometimes there is a delay in chatbot's response when the APIs are slow or not working properly.
-- The address needs to be accurate for the chatbot to start the search. Typos or incorrect spacing in the address might be detected as invalid address.
+- There might be a delay in chatbot's response when the APIs are slow or not working properly.
+- The address needs to be accurate for the chatbot to start the search. Typos or incorrect spacing in the address might be detected as an invalid address.
 - The API only supports search until a maximum of 100 kms.
 
 ## References
