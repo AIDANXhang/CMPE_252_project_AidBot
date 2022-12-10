@@ -46,13 +46,13 @@ or
 
 This is an interaction with the aidbot on slack
 
-<img src="images/conversation_1.png" alt="distribution" height="600" width="1400"/>
+<img src="images/conversation_1.png" alt="distribution" height="400" width="1200"/>
 
-<img src="images/conversation_2.png" alt="distribution" height="500" width="1400"/>
+<img src="images/conversation_2.png" alt="distribution" height="400" width="1400"/>
 
-<img src="images/conversation_3.png" alt="distribution" height="500" width="1400"/>
+<img src="images/conversation_3.png" alt="distribution" height="400" width="1400"/>
 
-<img src="images/conversation_4.png" alt="distribution" height="500" width="1400"/>
+<img src="images/conversation_4.png" alt="distribution" height="400" width="1400"/>
 
 It also stores the information on MySQL database:
 
