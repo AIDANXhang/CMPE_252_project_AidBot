@@ -64,3 +64,11 @@ It also stores the information on MySQL database:
 - The address needs to be accurate for the chatbot to start the search. Typos or incorrect spacing in the address might be detected as invalid address.
 - The API only supports search until a maximum of 100 kms.
 
+## References
+
+https://github.com/RasaHQ/rasa-3.x-form-examples
+
+https://rasa.com/docs/rasa/connectors/slack/
+
+https://www.youtube.com/watch?v=Ap62n_YAVZ8&list=PL75e0qA87dlEjGAc9j9v3a5h1mxI2Z9fi&ab_channel=Rasa
+
